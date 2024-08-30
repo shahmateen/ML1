@@ -1,0 +1,94 @@
+samih@Hassan MINGW64 ~ (master)
+$ sed 's/Software/IT/' employee.txt
+Employee ID, Employee Name, Employee Age, Employee Department, Employee Salary
+301,Mary Johnson,28,IT,54000
+302,James Smith,32,Marketing,62000
+303,Patricia Brown,29,IT,56000
+304,Robert Garcia,45,HR,73000
+305,Jennifer Miller,34,Finance,70000
+306,Michael Wilson,27,IT,53000
+307,Linda Moore,40,IT,78000
+308,William Taylor,38,Marketing,67000
+309,Elizabeth Anderson,36,Finance,74000
+310,David Thomas,33,HR,69000
+311,Barbara Jackson,26,IT,52000
+312,Richard White,41,IT,81000
+313,Susan Harris,29,Marketing,65000
+314,Joseph Martin,31,Finance,71000
+315,Karen Thompson,27,HR,68000
+316,Charles Martinez,43,IT,75000
+317,Nancy Robinson,35,IT,79000
+318,Christopher Clark,29,Marketing,66000
+319,Jessica Rodriguez,32,Finance,73000
+320,Daniel Lewis,46,HR,72000
+321,Emily Lee,25,IT,51000
+322,Matthew Walker,37,IT,77000
+323,Betty Hall,44,Marketing,64000
+324,Donald Young,30,Finance,72000
+325,Dorothy King,28,IT,55000
+326,Paul Wright,39,IT,80000
+327,Sandra Scott,33,HR,71000
+328,Mark Green,29,Marketing,63000
+329,George Adams,36,Finance,74000
+330,Laura Baker,30,IT,76000
+
+samih@Hassan MINGW64 ~ (master)
+$ awk -F, '$3>=30' employee.txt > emp.txt
+
+samih@Hassan MINGW64 ~ (master)
+$ awk -F, '
+{
+    sum[$4] += $5;
+    count[$4]++;
+}
+END {
+    for (dept in sum) {
+        avg = sum[dept] / count[dept];
+        printf "\n%s: %d\n", dept, avg + 0.5;
+    }
+}' emp.txt > updated_employees
+
+samih@Hassan MINGW64 ~ (master)
+$ cat updated_employees
+
+Software: 75000
+
+IT: 78500
+
+Marketing: 64333
+
+Finance: 72333
+
+HR: 71250
+
+samih@Hassan MINGW64 ~ (master)
+$ sed 's/Software/IT/' employee.txt >emp.txt
+
+samih@Hassan MINGW64 ~ (master)
+$ awk -F, '$3>=30' emp.txt > employee.txt
+
+samih@Hassan MINGW64 ~ (master)
+$ awk -F, '
+{
+    sum[$4] += $5;
+    count[$4]++;
+}
+END {
+    for (dept in sum) {
+        avg = sum[dept] / count[dept];
+        printf "\n%s: %d\n", dept, avg + 0.5;
+    }
+}' employee.txt > updated_employees
+
+samih@Hassan MINGW64 ~ (master)
+$ cat updated_employees
+
+IT: 78000
+
+Marketing: 64333
+
+Finance: 72333
+
+HR: 71250
+
+samih@Hassan MINGW64 ~ (master)
